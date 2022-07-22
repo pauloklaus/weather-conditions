@@ -1,5 +1,5 @@
-import HttpRequester from "@/externals/HttpRequester";
-import CacheHandler from "@/externals/CacheHandler";
+import HttpRequester from "@/plugins/HttpRequester";
+import CacheHandler from "@/plugins/CacheHandler";
 import CityRepository from "./CityRepository";
 import CityService from "./CityService";
 

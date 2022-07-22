@@ -1,4 +1,4 @@
-import CacheHandler from "@/externals/CacheHandler";
+import CacheHandler from "@/plugins/CacheHandler";
 
 describe("CacheHandler", () => {
 

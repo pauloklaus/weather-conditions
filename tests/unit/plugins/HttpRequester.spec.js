@@ -1,4 +1,4 @@
-import HttpRequester from "@/externals/HttpRequester";
+import HttpRequester from "@/plugins/HttpRequester";
 
 describe("HttpRequester", () => {
 
