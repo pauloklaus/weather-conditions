@@ -23,7 +23,7 @@ export default defineComponent({
           console.log(error.message);
         }
         else {
-          console.log("Houve um erro ao recuperar os dados metereológicos.");
+          console.log("Houve um erro ao recuperar os dados meteorológicos.");
         }
       }
     }
