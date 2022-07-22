@@ -15,3 +15,9 @@ make install
 ```sh
 make run
 ```
+
+## Run unit tests
+
+```sh
+make test
+```
