@@ -2,24 +2,25 @@ import City from "@/usecases/cities/City";
 import CityRepository from "@/usecases/cities/CityRepository";
 
 describe("CityRepository", () => {
-  const city = "Brasilia";
-  const country = "BR";
-  const cityName = `${city},${country}`;
-  const temp = 30;
-  const pressure = 1000;
-  const humidity = 70;
+  const city = new City({
+    name: "Brasilia",
+    country: "BR",
+    temp: 30,
+    pressure: 1000,
+    humidity: 70,
+  });
 
   const httpRequester = {
     get: () => ({
       main: {
-        temp,
-        pressure,
-        humidity,
+        temp: city.temp,
+        pressure: city.pressure,
+        humidity: city.humidity,
       },
       sys: {
-        country,
+        country: city.country,
       },
-      name: city,
+      name: city.name,
     })
   };
 
@@ -32,10 +33,10 @@ describe("CityRepository", () => {
   const validCacheHandler = {
     isValid: () => true,
     get: () => new City({
-      temp: temp + 10,
-      pressure: pressure + 10,
-      humidity: humidity + 10,
-      name: cityName,
+      ...city.toJson(),
+      temp: city.temp + 10,
+      pressure: city.pressure + 10,
+      humidity: city.humidity + 10,
     }).toJson(),
     set: () => {},
   };
@@ -49,21 +50,23 @@ describe("CityRepository", () => {
   });
 
   it("should get city weather from request", async () => {
-    const cityWeather = await cityRepositoryWithExpiredCache.getWeather(cityName);
+    const cityWeather = await cityRepositoryWithExpiredCache.getWeather(city);
 
-    expect(cityWeather.name).toBe(cityName);
-    expect(cityWeather.temp).toBe(temp);
-    expect(cityWeather.pressure).toBe(pressure);
-    expect(cityWeather.humidity).toBe(humidity);
+    expect(cityWeather.name).toBe(city.name);
+    expect(cityWeather.country).toBe(city.country);
+    expect(cityWeather.temp).toBe(city.temp);
+    expect(cityWeather.pressure).toBe(city.pressure);
+    expect(cityWeather.humidity).toBe(city.humidity);
   });
 
   it("should get city weather from cache", async () => {
-    const cityWeather = await cityRepositoryWithValidCache.getWeather(cityName);
+    const cityWeather = await cityRepositoryWithValidCache.getWeather(city);
 
-    expect(cityWeather.name).toBe(cityName);
-    expect(cityWeather.temp).toBe(temp + 10);
-    expect(cityWeather.pressure).toBe(pressure + 10);
-    expect(cityWeather.humidity).toBe(humidity + 10);
+    expect(cityWeather.name).toBe(city.name);
+    expect(cityWeather.country).toBe(city.country);
+    expect(cityWeather.temp).toBe(city.temp + 10);
+    expect(cityWeather.pressure).toBe(city.pressure + 10);
+    expect(cityWeather.humidity).toBe(city.humidity + 10);
   });
 
 });

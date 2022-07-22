@@ -10,7 +10,7 @@ class HttpRequester {
     try {
       return new URL(`${this._baseUrl}${route}`);
     } catch(error) {
-      throw new InvalidURLError("Erro ao buscar os dados meteorológicos.");
+      throw new InvalidURLError("Error fetching weather data.");
     }
   }
 

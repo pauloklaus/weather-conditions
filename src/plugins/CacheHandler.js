@@ -8,7 +8,7 @@ class CacheHandler {
   }
 
   _dateField() {
-    return "date";
+    return "updatedAt";
   }
 
   remove(key) {

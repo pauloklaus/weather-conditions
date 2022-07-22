@@ -3,63 +3,85 @@ import RequiredFieldValidationError from "@/errors/RequiredFieldValidationError"
 import InvalidFormatValidationError from "@/errors/InvalidFormatValidationError";
 
 describe("City", () => {
-  const name = "London,UK";
+  const name = "Brasilia";
+  const country = "BR";
   const temp = 30;
   const pressure = 50;
   const humidity = 40;
-  const cityWeather = new City({ name, temp, pressure, humidity });
+  const updatedAt = new Date;
+  const city = new City({
+    name, country, temp, pressure, humidity, updatedAt
+  });
 
   it("should get city model", () => {
-    expect(cityWeather.name).toBe(name);
-    expect(cityWeather.temp).toBe(temp);
-    expect(cityWeather.pressure).toBe(pressure);
-    expect(cityWeather.humidity).toBe(humidity);
+    expect(city.name).toBe(name);
+    expect(city.country).toBe(country);
+    expect(city.temp).toBe(temp);
+    expect(city.pressure).toBe(pressure);
+    expect(city.humidity).toBe(humidity);
+    expect(city.updatedAt).toBe(updatedAt);
   });
 
   it("should get city as json object", () => {
-    const cityAsJson = cityWeather.toJson();
+    const cityAsJson = city.toJson();
 
     expect(cityAsJson.name).toBe(name);
+    expect(cityAsJson.country).toBe(country);
     expect(cityAsJson.temp).toBe(temp);
     expect(cityAsJson.pressure).toBe(pressure);
     expect(cityAsJson.humidity).toBe(humidity);
+    expect(cityAsJson.updatedAt).toBe(updatedAt);
   });
 
-  it("should throw a RequiredFieldValidationError with name field", () => {
-    const test = () => {
-      new City();
-    };
+  it("should throw a RequiredFieldValidationError without required fields", () => {
+    const emptyTest = () => { new City(); };
+    const onlyNameTest = () => { new City({ name }); };
+    const onlyCountryTest = () => { new City({ country }); };
 
-    expect(test).toThrow(RequiredFieldValidationError);
+    expect(emptyTest).toThrow(RequiredFieldValidationError);
+    expect(onlyNameTest).toThrow(RequiredFieldValidationError);
+    expect(onlyCountryTest).toThrow(RequiredFieldValidationError);
   });
 
-  it("should throw a InvalidFormatValidationError with name field", () => {
+  it("should throw a InvalidFormatValidationError with wrong country field", () => {
     const test = () => {
-      new City({ name: "wrong-city" });
-    };
-
-    expect(test).toThrow(InvalidFormatValidationError);
-  });
-
-  it("should throw a InvalidFormatValidationError with temp field", () => {
-    const test = () => {
-      new City({ name, temp: "wrong-temp" });
-    };
-
-    expect(test).toThrow(InvalidFormatValidationError);
-  });
-
-  it("should throw a InvalidFormatValidationError with pressure field", () => {
-    const test = () => {
-      new City({ name, pressure: "wrong-pressure" });
+      new City({
+        ...city.toJson(),
+        country: "wrong-country",
+      });
     };
 
     expect(test).toThrow(InvalidFormatValidationError);
   });
 
-  it("should throw a InvalidFormatValidationError with humidity field", () => {
+  it("should throw a InvalidFormatValidationError with wrong temp field", () => {
     const test = () => {
-      new City({ name, humidity: "wrong-humidity" });
+      new City({
+        ...city.toJson(),
+        temp: "wrong-temp",
+      });
+    };
+
+    expect(test).toThrow(InvalidFormatValidationError);
+  });
+
+  it("should throw a InvalidFormatValidationError with wrong pressure field", () => {
+    const test = () => {
+      new City({
+        ...city.toJson(),
+        pressure: "wrong-pressure",
+      });
+    };
+
+    expect(test).toThrow(InvalidFormatValidationError);
+  });
+
+  it("should throw a InvalidFormatValidationError with wrong humidity field", () => {
+    const test = () => {
+      new City({
+        ...city.toJson(),
+        humidity: "wrong-humidity",
+      });
     };
 
     expect(test).toThrow(InvalidFormatValidationError);

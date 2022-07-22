@@ -7,8 +7,13 @@ class CityService {
     this._repository = repository;
   }
 
-  getWeather(cityName) {
-    return this._repository.getWeather(new City({ name: cityName }));
+  getWeather(cityAndCountryName) {
+    const cityAndCountry = cityAndCountryName.split(",");
+
+    return this._repository.getWeather(new City({
+      name: cityAndCountry[0],
+      country: cityAndCountry[1],
+    }));
   }
 }
 
