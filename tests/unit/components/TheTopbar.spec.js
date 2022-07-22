@@ -8,7 +8,6 @@ describe("TheTopbar.vue", () => {
     const header = wrapper.find("header");
     const headerHtml = header.html();
 
-    expect(header.classes()).toContain("topbar");
     expect(headerHtml).toContain("<header");
     expect(headerHtml).toContain("<img");
   });
