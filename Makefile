@@ -13,3 +13,6 @@ run:
 
 shell:
 	@${DOCKER_RUN} ${DOCKER_IMAGE} sh
+
+test:
+	@${DOCKER_RUN} ${DOCKER_IMAGE} npm run test:unit
