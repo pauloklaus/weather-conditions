@@ -1,3 +1,5 @@
+import City from "./City";
+
 class CityService {
   _repository;
 
@@ -5,8 +7,8 @@ class CityService {
     this._repository = repository;
   }
 
-  getWeather(city) {
-    return this._repository.getWeather(city);
+  getWeather(cityName) {
+    return this._repository.getWeather(new City({ name: cityName }));
   }
 }
 

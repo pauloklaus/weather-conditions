@@ -6,7 +6,9 @@ class CityRepository {
     this._cacheHandler = cacheHandler;
   }
 
-  async getWeather(cityName) {
+  async getWeather(city) {
+    const cityName = `${city.name},${city.country}`;
+
     if (this._cacheHandler.isValid(cityName)) {
       return Promise.resolve(new City(this._cacheHandler.get(cityName)));
     }

@@ -3,16 +3,16 @@ import CityService from "@/services/cities/CityService";
 
 describe("CityService", () => {
   const repository = {
-    getWeather: (name) => Promise.resolve(
+    getWeather: (city) => Promise.resolve(
       new City({
-        name,
+        ...city.toJson(),
         temp: 30,
         pressure: 50,
         humidity: 40,
       })
     )
   };
-  
+
   let cityService = null;
 
   beforeEach(() => {
