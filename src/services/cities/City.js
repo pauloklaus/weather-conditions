@@ -52,6 +52,15 @@ class City {
   get humidity() {
     return this._humidity;
   }
+
+  toJson() {
+    return {
+      name: this.name,
+      temp: this.temp,
+      pressure: this.pressure,
+      humidity: this.humidity,
+    };
+  }
 }
 
 export default City;

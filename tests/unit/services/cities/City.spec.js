@@ -7,14 +7,22 @@ describe("City", () => {
   const temp = 30;
   const pressure = 50;
   const humidity = 40;
+  const cityWeather = new City({ name, temp, pressure, humidity });
 
   it("should get city model", () => {
-    const cityWeather = new City({ name, temp, pressure, humidity });
-
     expect(cityWeather.name).toBe(name);
     expect(cityWeather.temp).toBe(temp);
     expect(cityWeather.pressure).toBe(pressure);
     expect(cityWeather.humidity).toBe(humidity);
+  });
+
+  it("should get city as json object", () => {
+    const cityAsJson = cityWeather.toJson();
+
+    expect(cityAsJson.name).toBe(name);
+    expect(cityAsJson.temp).toBe(temp);
+    expect(cityAsJson.pressure).toBe(pressure);
+    expect(cityAsJson.humidity).toBe(humidity);
   });
 
   it("should throw a RequiredFieldValidationError with name field", () => {
