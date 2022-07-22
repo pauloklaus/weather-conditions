@@ -1,6 +1,6 @@
-# Weather Conditions
+# Weather Now
 
-Web interface to visualize the weather conditions of some cities using data retrieved from the openweathermap.org portal.
+Web interface to visualize the weather of some cities using data retrieved from the openweathermap.org portal.
 
 ## Preparing a local environment
 
