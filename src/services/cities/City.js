@@ -12,23 +12,23 @@ class City {
     humidity = 0,
   } = {}) {
     if (isEmpty(name)) {
-      throw new RequiredFieldValidationError("name");
+      throw new RequiredFieldValidationError("O nome da cidade é obrigatório.");
     }
 
     if (!isValidCityAndCountry(name)) {
-      throw new InvalidFormatValidationError("name");
+      throw new InvalidFormatValidationError("Não é um nome válido de cidade.");
     }
 
     if (!isNumber(temp)) {
-      throw new InvalidFormatValidationError(temp);
+      throw new InvalidFormatValidationError("A temperatura não é válida.");
     }
 
     if (!isNumber(pressure)) {
-      throw new InvalidFormatValidationError(pressure);
+      throw new InvalidFormatValidationError("A pressão não é válida.");
     }
 
     if (!isNumber(humidity)) {
-      throw new InvalidFormatValidationError(humidity);
+      throw new InvalidFormatValidationError("A humidade não é válida.");
     }
 
     this._name = name;

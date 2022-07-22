@@ -31,7 +31,6 @@ describe("City", () => {
     };
 
     expect(test).toThrow(RequiredFieldValidationError);
-    expect(test).toThrow("name");
   });
 
   it("should throw a InvalidFormatValidationError with name field", () => {
@@ -40,7 +39,6 @@ describe("City", () => {
     };
 
     expect(test).toThrow(InvalidFormatValidationError);
-    expect(test).toThrow("name");
   });
 
   it("should throw a InvalidFormatValidationError with temp field", () => {
@@ -49,7 +47,6 @@ describe("City", () => {
     };
 
     expect(test).toThrow(InvalidFormatValidationError);
-    expect(test).toThrow("temp");
   });
 
   it("should throw a InvalidFormatValidationError with pressure field", () => {
@@ -58,7 +55,6 @@ describe("City", () => {
     };
 
     expect(test).toThrow(InvalidFormatValidationError);
-    expect(test).toThrow("pressure");
   });
 
   it("should throw a InvalidFormatValidationError with humidity field", () => {
@@ -67,7 +63,6 @@ describe("City", () => {
     };
 
     expect(test).toThrow(InvalidFormatValidationError);
-    expect(test).toThrow("humidity");
   });
 
 });
