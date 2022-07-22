@@ -3,12 +3,14 @@ import CityService from "@/services/cities/CityService";
 
 describe("CityService", () => {
   const repository = {
-    getWeather: (city) => new City({
-      name: city.name,
-      temp: 30,
-      pressure: 50,
-      humidity: 40,
-    })
+    getWeather: (name) => Promise.resolve(
+      new City({
+        name,
+        temp: 30,
+        pressure: 50,
+        humidity: 40,
+      })
+    )
   };
   
   let cityService = null;
@@ -17,9 +19,9 @@ describe("CityService", () => {
     cityService = new CityService(repository);
   });
 
-  it("should get city weather", () => {
+  it("should get city weather", async () => {
     const name = "Some City,BR";
-    const cityWeather = cityService.getWeather(new City({ name }));
+    const cityWeather = await cityService.getWeather(name);
 
     expect(cityWeather.name).toBe(name);
     expect(cityWeather.temp).toBe(30);
