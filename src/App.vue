@@ -6,7 +6,7 @@
 <script>
 import { defineComponent } from "vue";
 import CustomError from "./errors/CustomError";
-import CityFactory from "./services/cities/CityFactory";
+import CityServiceFactory from "./services/cities/CityServiceFactory";
 import TheTopbar from "./components/TheTopbar.vue";
 import TheContent from "./components/TheContent.vue";
 
@@ -14,7 +14,7 @@ export default defineComponent({
   setup() {
     async function refreshCitiesWeather() {
       try {
-        const cityService = CityFactory.factory();
+        const cityService = CityServiceFactory.factory();
         const weathersResponse = await Promise.all(["Nuuk,GL", "Urubici,BR", "Nairobi,KE"].map(name => cityService.getWeather(name)));
         console.log(weathersResponse);
       }
