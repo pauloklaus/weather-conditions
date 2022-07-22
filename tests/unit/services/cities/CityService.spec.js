@@ -1,45 +1,30 @@
+import City from "@/services/cities/City";
 import CityService from "@/services/cities/CityService";
-import RequiredFieldValidationError from "@/errors/RequiredFieldValidationError";
-import InvalidFormatValidationError from "@/errors/InvalidFormatValidationError";
 
 describe("CityService", () => {
+  const repository = {
+    getWeather: (city) => new City({
+      name: city.name,
+      temp: 30,
+      pressure: 50,
+      humidity: 40,
+    })
+  };
+  
   let cityService = null;
 
   beforeEach(() => {
-    const repository = {
-      getWeather: (city) => ({
-        city,
-        temp: 30,
-        pressure: 50,
-        humidity: 40,
-      })
-    };
-
     cityService = new CityService(repository);
   });
 
   it("should get city weather", () => {
-    const cityWeather = cityService.getWeather("Some City,BR");
+    const name = "Some City,BR";
+    const cityWeather = cityService.getWeather(new City({ name }));
 
+    expect(cityWeather.name).toBe(name);
     expect(cityWeather.temp).toBe(30);
-  });
-
-  it("should throw a RequiredFieldValidationError", () => {
-    const test = () => {
-      cityService.getWeather("");
-    };
-
-    expect(test).toThrow(RequiredFieldValidationError);
-    expect(test).toThrow("city");
-  });
-
-  it("should throw a InvalidFormatValidationError", () => {
-    const test = () => {
-      cityService.getWeather("wrong-city");
-    };
-
-    expect(test).toThrow(InvalidFormatValidationError);
-    expect(test).toThrow("city");
+    expect(cityWeather.pressure).toBe(50);
+    expect(cityWeather.humidity).toBe(40);
   });
 
 });
