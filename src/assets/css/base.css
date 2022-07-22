@@ -1,40 +1,10 @@
-:root {
-  --color-white: 255, 255, 255;
-  --color-gray1: 241, 241, 241;
-  --color-gray2: 235, 235, 235;
-  --color-gray3: 180, 180, 180;
-  --color-gray4: 115, 124, 132;
-  --color-gray5: 51, 51, 51;
-  --color-info: 105, 163, 255;
-  --color-warning: 255, 150, 50;
-  --color-danger: 237, 25, 70;
-
-  --card-footer-bg-color: rgba(var(--color-gray1), 0.5);
-  --app-bg-color: rgb(var(--color-gray1));
-  --divider: rgb(var(--color-gray2));
-
-  --box-shadow-color: rgba(var(--color-gray5), 0.1);
-  --box-shadow-size: 3px;
-
-  --topbar-bg-color: rgb(var(--color-white));
-  --topbar-height: 56px;
-
-  --text-muted: rgb(var(--color-gray3));
-  --text-primary: rgb(var(--color-gray4));
-  --text-info: rgb(var(--color-info));
-  --text-warning: rgb(var(--color-warning));
-  --text-danger: rgb(var(--color-danger));
-
-  --font-family: Helvetica, Arial, sans-serif;
-}
-
 * {
   font-family: var(--font-family);
   margin: 0;
   padding: 0;
   outline: none;
   border: none;
-  color: var(--text-primary);
+  color: var(--primary);
 }
 
 body {
@@ -54,21 +24,6 @@ body {
   color: var(--danger);
 }
 
-.topbar {
-  height: var(--topbar-height);
-  background-color: var(--topbar-bg-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  position: sticky;
-  margin-bottom: 20px;
-  box-shadow: 0 0 var(--box-shadow-size) var(--box-shadow-color);
-}
-
-.content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+.bg-white {
+  background-color: var(--white);
 }

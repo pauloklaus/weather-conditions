@@ -1,0 +1,26 @@
+:root {
+  --color-white: 255, 255, 255;
+  --color-gray1: 241, 241, 241;
+  --color-gray2: 235, 235, 235;
+  --color-gray3: 180, 180, 180;
+  --color-gray4: 115, 124, 132;
+  --color-gray5: 51, 51, 51;
+  --color-info: 105, 163, 255;
+  --color-warning: 255, 150, 50;
+  --color-danger: 237, 25, 70;
+
+  --card-footer-bg-color: rgba(var(--color-gray1), 0.5);
+  --app-bg-color: rgb(var(--color-gray1));
+  --divider: rgb(var(--color-gray2));
+
+  --box-shadow-color: rgba(var(--color-gray5), 0.1);
+
+  --white: rgb(var(--color-white));
+  --muted: rgb(var(--color-gray3));
+  --primary: rgb(var(--color-gray4));
+  --info: rgb(var(--color-info));
+  --warning: rgb(var(--color-warning));
+  --danger: rgb(var(--color-danger));
+
+  --font-family: Helvetica, Arial, sans-serif;
+}
