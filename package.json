@@ -1,6 +1,10 @@
 {
   "name": "weather-conditions",
   "version": "0.1.0",
+  "author": {
+    "name": "Paulo Sergio Klaus",
+    "e-mail": "contato@pauloklaus.com.br"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
