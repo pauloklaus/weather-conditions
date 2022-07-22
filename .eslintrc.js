@@ -18,6 +18,7 @@ module.exports = {
     "indent": ["error", 2],
     "no-multi-spaces": ["error"],
     "vue/html-indent": ["error", 2],
+    "vue/no-multiple-template-root": "off",
   },
   overrides: [
     {
