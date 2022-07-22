@@ -4,9 +4,7 @@ Web interface to visualize the weather of some cities using data retrieved from 
 
 ## Preparing a local environment
 
-The application runs under docker, so you need to have it installed on your computer. Follow the installation steps on the official docker website: [docs.docker.com/get-docker](https://docs.docker.com/get-docker/)
-
-Next, you need to configure the .env.local file with some values, as in the following example:
+You need to configure the .env.local file with some values, as in the following example:
 
 ```env
 BASE_URL=/
@@ -20,19 +18,47 @@ After confirming your registration, you will receive an email with an example of
 
 You can also check the necessary parameters in the .env.template file.
 
-Then you need to install the application's dependencies:
+## Run locally (on your operating system)
+
+To run locally, you need to install node version 16 (see installation details at [nodejs.org](https://nodejs.org/)).
+
+Then run the commands:
+
+```sh
+git clone https://github.com/pauloklaus/weather-now/
+cd weather-now
+npm install
+npm run serve
+```
+
+The application can be accessed via browser via http://localhost:8080
+
+To run the tests:
+
+```sh
+npm run test:unit
+```
+
+## Run with docker-compose
+
+```sh
+docker-compose up
+```
+
+With docker-compose, dependencies are automatically installed, tests are run and the application is launched.
+
+The application can be accessed via browser via http://localhost:8080
+
+## Run with makefile + docker
 
 ```sh
 make install
-```
-
-## Run
-
-```sh
 make run
 ```
 
-## Run unit tests
+The application can be accessed via browser via http://localhost:8080
+
+To run the tests:
 
 ```sh
 make test
