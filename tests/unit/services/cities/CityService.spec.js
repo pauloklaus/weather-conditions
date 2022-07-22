@@ -30,14 +30,16 @@ describe("CityService", () => {
     };
 
     expect(test).toThrow(RequiredFieldValidationError);
+    expect(test).toThrow("city");
   });
 
   it("should throw a InvalidFormatValidationError", () => {
     const test = () => {
-      cityService.getWeather("test");
+      cityService.getWeather("wrong-city");
     };
 
     expect(test).toThrow(InvalidFormatValidationError);
+    expect(test).toThrow("city");
   });
 
 });
