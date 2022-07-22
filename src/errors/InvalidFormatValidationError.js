@@ -1,5 +1,5 @@
-import ValidationError from "./ValidationError";
+import CustomError from "./CustomError";
 
-class InvalidFormatValidationError extends ValidationError {}
+class InvalidFormatValidationError extends CustomError {}
 
 export default InvalidFormatValidationError;

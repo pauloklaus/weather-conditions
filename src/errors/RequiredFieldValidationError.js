@@ -1,5 +1,5 @@
-import ValidationError from "./ValidationError";
+import CustomError from "./CustomError";
 
-class RequiredFieldValidationError extends ValidationError {}
+class RequiredFieldValidationError extends CustomError {}
 
 export default RequiredFieldValidationError;
