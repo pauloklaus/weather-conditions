@@ -4,6 +4,8 @@
     "module": "esnext",
     "baseUrl": "./",
     "moduleResolution": "node",
+    "importHelpers": true,
+    "jsx": "preserve",
     "paths": {
       "@/*": [
         "src/*"
