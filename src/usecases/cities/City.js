@@ -39,9 +39,9 @@ class City {
 
     this._name = name;
     this._country = country;
-    this._temp = temp;
-    this._pressure = pressure;
-    this._humidity = humidity;
+    this._temp = Math.round(temp);
+    this._pressure = Math.round(pressure);
+    this._humidity = Math.round(humidity);
     this._updatedAt = updatedAt;
   }
 

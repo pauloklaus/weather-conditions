@@ -5,9 +5,9 @@ import InvalidFormatValidationError from "@/errors/InvalidFormatValidationError"
 describe("City", () => {
   const name = "Brasilia";
   const country = "BR";
-  const temp = 30;
-  const pressure = 50;
-  const humidity = 40;
+  const temp = 30.15;
+  const pressure = 50.25;
+  const humidity = 40.35;
   const updatedAt = new Date;
   const city = new City({
     name, country, temp, pressure, humidity, updatedAt
@@ -16,9 +16,9 @@ describe("City", () => {
   it("should get city model", () => {
     expect(city.name).toBe(name);
     expect(city.country).toBe(country);
-    expect(city.temp).toBe(temp);
-    expect(city.pressure).toBe(pressure);
-    expect(city.humidity).toBe(humidity);
+    expect(city.temp).toBe(Math.round(temp));
+    expect(city.pressure).toBe(Math.round(pressure));
+    expect(city.humidity).toBe(Math.round(humidity));
     expect(city.updatedAt).toBe(updatedAt);
   });
 
@@ -27,9 +27,9 @@ describe("City", () => {
 
     expect(cityAsJson.name).toBe(name);
     expect(cityAsJson.country).toBe(country);
-    expect(cityAsJson.temp).toBe(temp);
-    expect(cityAsJson.pressure).toBe(pressure);
-    expect(cityAsJson.humidity).toBe(humidity);
+    expect(cityAsJson.temp).toBe(Math.round(temp));
+    expect(cityAsJson.pressure).toBe(Math.round(pressure));
+    expect(cityAsJson.humidity).toBe(Math.round(humidity));
     expect(cityAsJson.updatedAt).toBe(updatedAt);
   });
 
