@@ -63,3 +63,17 @@ To run the tests:
 ```sh
 make test
 ```
+
+## Patterns
+
+* CSS root vars
+* CSS BEM
+* Design mobile first
+
+## Tools and libs
+
+* Vue.js 3
+* Vue Unit Test
+* Jest
+* Docker
+* docker-compose
