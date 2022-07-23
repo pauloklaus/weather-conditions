@@ -1,6 +1,8 @@
 <template>
-  <main class="content">
-    <CityCard v-for="city in cities" :key="city" :name="city" />
+  <main class="main">
+    <div class="main__container">
+      <CityCard v-for="city in cities" :key="city" :city="city" />
+    </div>
   </main>
 </template>
 
@@ -11,7 +13,7 @@ import CityCard from "./CityCard/CityCard.vue";
 export default defineComponent({
   components: { CityCard },
   setup() {
-    const cities = ["Nuuk,GL", "Urubici,BR", "Nairobi,KE"];
+    const cities = ["nuuk,gl", "urubici,br", "nairobi,ke"];
 
     return {
       cities,
@@ -19,3 +21,9 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+.main__container {
+  margin: 30px 34px;
+}
+</style>
