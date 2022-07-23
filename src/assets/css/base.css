@@ -1,5 +1,6 @@
 * {
   font-family: var(--font-family);
+  font-size: 18px;
   margin: 0;
   padding: 0;
   outline: none;
@@ -9,21 +10,5 @@
 
 body {
   background-color: var(--app-bg-color);
-  min-width: 300px;
-}
-
-.text-primary {
-  color: var(--primary);
-}
-
-.text-warning {
-  color: var(--warning);
-}
-
-.text-danger {
-  color: var(--danger);
-}
-
-.bg-white {
-  background-color: var(--white);
+  min-width: 320px;
 }
