@@ -6,14 +6,16 @@
 
 <style scoped>
 .topbar {
-  height: 56px;
-  background-color: var(--white);
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: sticky;
   top: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--white);
   box-shadow: 0 0 3px var(--box-shadow-color);
+  height: 56px;
 }
 
 .topbar__logo {
