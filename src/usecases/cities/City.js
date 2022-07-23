@@ -3,6 +3,7 @@ import RequiredFieldValidationError from "@/errors/RequiredFieldValidationError"
 import isEmpty from "@/helpers/IsEmpty";
 import isValidCountry from "@/helpers/IsValidCountry";
 import isNumber from "@/helpers/IsNumber";
+import capitalizeAllWords from "@/helpers/CapitalizeAllWords";
 
 class City {
   constructor({
@@ -67,6 +68,15 @@ class City {
 
   get updatedAt() {
     return this._updatedAt;
+  }
+
+  static factoryWithCityAndCountry(cityAndCountry) {
+    const [ name = "", country = "" ] = `${cityAndCountry}`.split(",");
+
+    return new City({
+      name: capitalizeAllWords(name),
+      country: `${country}`.toUpperCase(),
+    });
   }
 
   toJson() {

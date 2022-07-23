@@ -33,6 +33,13 @@ describe("City", () => {
     expect(cityAsJson.updatedAt).toBe(updatedAt);
   });
 
+  it("should factory new city from string", () => {
+    const cityFromFactory = City.factoryWithCityAndCountry("sao paulo,br");
+
+    expect(cityFromFactory.name).toBe("Sao Paulo");
+    expect(cityFromFactory.country).toBe("BR");
+  });
+
   it("should throw a RequiredFieldValidationError without required fields", () => {
     const emptyTest = () => { new City(); };
     const onlyNameTest = () => { new City({ name }); };
