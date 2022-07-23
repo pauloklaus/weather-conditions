@@ -1,22 +1,22 @@
 <template>
-  <header>
-    <img src="@/assets/logo.svg" />
+  <header class="topbar">
+    <img class="topbar__logo" src="@/assets/logo.svg" />
   </header>
 </template>
 
 <style scoped>
-header {
+.topbar {
   height: 56px;
   background-color: var(--white);
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  position: fixed;
+  position: sticky;
+  top: 0;
   box-shadow: 0 0 3px var(--box-shadow-color);
 }
 
-img {
+.topbar__logo {
   height: 26px;
 }
 </style>
