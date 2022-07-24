@@ -1,12 +1,18 @@
 <template>
-  <div class="card">
+  <div class="card" @mouseover="$emit('mouseover')">
     <CityCardHeader :city="`${cityData.name}, ${cityData.country}`"/>
-    <CityCardContent :temp="cityData.temp" />
-    <CityCardFooter
-      :humidity="cityData.humidity"
-      :pressure="cityData.pressure"
-      :updatedAt="cityData.updatedAt"
-    />
+
+    <CityCardLoader v-if="isLoading" />
+
+    <template v-else>
+      <CityCardContent :temp="cityData.temp" />
+      <CityCardFooter
+        :show-details="showDetails"
+        :humidity="cityData.humidity"
+        :pressure="cityData.pressure"
+        :updated-at="cityData.updatedAt"
+      />
+    </template>
   </div>
 </template>
 
@@ -17,6 +23,7 @@ import CustomError from "@/errors/CustomError";
 import CityCardHeader from "./CityCardHeader.vue";
 import CityCardContent from "./CityCardContent.vue";
 import CityCardFooter from "./CityCardFooter.vue";
+import CityCardLoader from "./CityCardLoader.vue";
 import City from "@/usecases/cities/City";
 
 export default {
@@ -24,11 +31,16 @@ export default {
     CityCardHeader,
     CityCardContent,
     CityCardFooter,
+    CityCardLoader,
   },
   props: {
     city: {
       type: String,
       required: true,
+    },
+    showDetails: {
+      type: Boolean,
+      default: false,
     },
   },
   setup({ city }) {
@@ -61,6 +73,7 @@ export default {
     fetchCityWeather();
 
     return {
+      isLoading,
       errorMessage,
       hasError,
       cityData,
@@ -71,11 +84,14 @@ export default {
 
 <style scoped>
 .card {
+  display: flex;
+  flex-direction: column;
+
+  background-color: var(--white);
   border-radius: 3px;
+  box-shadow: 1px 1px 6px var(--box-shadow-color);
   margin: 0 auto;
   width: 252px;
-  background-color: var(--white);
-  box-shadow: 1px 1px 6px var(--box-shadow-color);
 }
 
 .card:nth-child(n+2) {
