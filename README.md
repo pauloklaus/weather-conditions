@@ -79,3 +79,7 @@ make test
 * Jest
 * Docker
 * docker-compose
+
+## Online demo
+
+* (Cloudflare Pages)[https://pages.cloudflare.com/]
