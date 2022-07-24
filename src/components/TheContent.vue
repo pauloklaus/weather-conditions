@@ -1,11 +1,12 @@
 <template>
-  <main class="main">
+  <main class="main" ref="main">
     <div class="main__container">
       <CityCard
         v-for="(city, index) in cities"
         :key="city"
         :city="city"
         :show-details="isCurrentShowDetails(index)"
+        :class="`main__container--order-${index}`"
         @focus="showDetails(index)"
       />
     </div>
@@ -19,7 +20,8 @@ import CityCard from "./CityCard/CityCard.vue";
 export default defineComponent({
   components: { CityCard },
   setup() {
-    const cities = ["nuuk,gl", "urubici,br", "nairobi,ke"];
+    const cities = ["urubici,br", "nuuk,gl", "nairobi,ke"];
+    const main = ref({});
     const detailsIndex = ref(0);
 
     function isCurrentShowDetails(index) {
@@ -59,6 +61,7 @@ export default defineComponent({
     });
 
     return {
+      main,
       cities,
       isCurrentShowDetails,
       showDetails,
@@ -72,6 +75,18 @@ export default defineComponent({
   margin: 30px 34px;
 }
 
+.main__container--order-0 {
+  order: 0;
+}
+
+.main__container--order-1 {
+  order: 1;
+}
+
+.main__container--order-2 {
+  order: 2;
+}
+
 @media (min-width: 640px) {
   .main__container {
     display: flex;
@@ -81,6 +96,18 @@ export default defineComponent({
     margin-top: 0;
     margin-bottom: 0;
     min-height: 100vh;
+  }
+
+  .main__container--order-0 {
+    order: 1;
+  }
+
+  .main__container--order-1 {
+    order: 0;
+  }
+
+  .main__container--order-2 {
+    order: 2;
   }
 }
 </style>

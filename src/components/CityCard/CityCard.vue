@@ -143,8 +143,7 @@ export default {
   }
 
   .card:nth-child(n+2) {
-    margin-top: 0;
-    margin-left: 50px;
+    margin: 0 50px;
   }
 }
 </style>
