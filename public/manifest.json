@@ -1,0 +1,1 @@
+{"name":"Wheater Now","short_name":"WheaterNow","description":"Show wheater conditions of some cities.","start_url":"/","orientation":"portrait","display":"standalone","background_color":"#ffffff","theme_color":"#ffffff","prompt_message":"Add an icon to quickly access","icons":[{"src":"appicon.png","sizes":"250x250","type":"image/png"}],"status":"ok"}
