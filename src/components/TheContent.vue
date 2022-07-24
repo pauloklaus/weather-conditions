@@ -19,8 +19,6 @@ import CityCard from "./CityCard/CityCard.vue";
 export default defineComponent({
   components: { CityCard },
   setup() {
-    const SHOW_NEXT_DETAILS_TIME = 10_000;
-
     const cities = ["nuuk,gl", "urubici,br", "nairobi,ke"];
     const detailsIndex = ref(0);
 
@@ -38,6 +36,9 @@ export default defineComponent({
       }
     }
 
+    const showNextDetailsTime = 10_000;
+    let detailsTimeout = null;
+
     function showNextDetails() {
       clearDetailsTimeout();
 
@@ -48,10 +49,8 @@ export default defineComponent({
             : 0;
 
         showNextDetails();
-      }, SHOW_NEXT_DETAILS_TIME);
+      }, showNextDetailsTime);
     }
-
-    let detailsTimeout = null;
 
     showNextDetails();
 

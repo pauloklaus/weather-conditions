@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { computed, ref, toRefs } from "vue";
+import { computed, onBeforeUnmount, ref, toRefs } from "vue";
 import CityServiceFactory from "@/usecases/cities/CityServiceFactory";
 import City from "@/usecases/cities/City";
 import CityCardError from "./CityCardError.vue";
@@ -61,6 +61,23 @@ export default {
       }
     }
 
+    const refreshCityDataTime = 10 * 60 * 1_000;
+    let refreshTimeout = null;
+
+    function clearRefreshTimeout() {
+      if (refreshTimeout) {
+        clearTimeout(refreshTimeout);
+      }
+    }
+
+    function refreshCityData() {
+      clearRefreshTimeout();
+
+      refreshTimeout = setTimeout(() => {
+        fetchCityWeather();
+      }, refreshCityDataTime);
+    }
+
     const cityService = CityServiceFactory.factory();
     const cityData = ref(City.factoryWithCityAndCountry(city.value));
 
@@ -71,6 +88,7 @@ export default {
 
         const cityResponse = await cityService.getWeather(city.value);
         cityData.value = cityResponse.toJson();
+        refreshCityData();
       }
       catch {
         hasError.value = true;
@@ -81,6 +99,10 @@ export default {
     }
 
     fetchCityWeather();
+
+    onBeforeUnmount(() => {
+      clearRefreshTimeout();
+    });
 
     return {
       isLoading,
