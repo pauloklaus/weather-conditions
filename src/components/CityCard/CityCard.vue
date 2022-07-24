@@ -1,5 +1,5 @@
 <template>
-  <div class="card" @mouseover="emitMouseOver">
+  <div class="card" @mouseover="emitFocus" @click="emitFocus">
     <CityCardHeader :city="`${cityData.name}, ${cityData.country}`"/>
 
     <CityCardLoader v-if="isLoading" />
@@ -48,9 +48,9 @@ export default {
     const errorMessage = ref("");
     const hasError = computed(() => errorMessage.value !== "");
 
-    function emitMouseOver() {
+    function emitFocus() {
       if (!isLoading.value) {
-        emit("mouseover");
+        emit("focus");
       }
     }
 
@@ -80,7 +80,7 @@ export default {
 
     return {
       isLoading,
-      emitMouseOver,
+      emitFocus,
       errorMessage,
       hasError,
       cityData,

@@ -6,7 +6,7 @@
         :key="city"
         :city="city"
         :show-details="isCurrentShowDetails(index)"
-        @mouseover="showDetails(index)"
+        @focus="showDetails(index)"
       />
     </div>
   </main>
