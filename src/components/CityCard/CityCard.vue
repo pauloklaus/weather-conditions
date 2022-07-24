@@ -2,7 +2,9 @@
   <div class="card" @mouseover="emitFocus" @click="emitFocus">
     <CityCardHeader :city="`${cityData.name}, ${cityData.country}`"/>
 
-    <CityCardLoader v-if="isLoading" />
+    <CityCardError v-if="hasError" @tryAgain="fetchCityWeather" />
+
+    <CityCardLoader v-else-if="isLoading" />
 
     <template v-else>
       <CityCardContent :temp="cityData.temp" />
@@ -17,14 +19,15 @@
 </template>
 
 <script>
-import { computed, ref } from "vue";
+import { ref } from "vue";
 import CityServiceFactory from "@/usecases/cities/CityServiceFactory";
+import City from "@/usecases/cities/City";
 import CustomError from "@/errors/CustomError";
+import CityCardError from "./CityCardError.vue";
+import CityCardLoader from "./CityCardLoader.vue";
 import CityCardHeader from "./CityCardHeader.vue";
 import CityCardContent from "./CityCardContent.vue";
 import CityCardFooter from "./CityCardFooter.vue";
-import CityCardLoader from "./CityCardLoader.vue";
-import City from "@/usecases/cities/City";
 
 export default {
   components: {
@@ -32,6 +35,7 @@ export default {
     CityCardContent,
     CityCardFooter,
     CityCardLoader,
+    CityCardError
   },
   props: {
     city: {
@@ -45,8 +49,7 @@ export default {
   },
   setup({ city }, { emit }) {
     const isLoading = ref(true);
-    const errorMessage = ref("");
-    const hasError = computed(() => errorMessage.value !== "");
+    const hasError = ref(false);
 
     function emitFocus() {
       if (!isLoading.value) {
@@ -60,16 +63,20 @@ export default {
     async function fetchCityWeather() {
       try {
         isLoading.value = true;
-        errorMessage.value = "";
+        hasError.value = "";
 
         const cityResponse = await cityService.getWeather(city);
         cityData.value = cityResponse.toJson();
       }
       catch (error) {
-        errorMessage.value =
+        hasError.value = true;
+
+        const errorMessage =
           error instanceof CustomError
             ? error.message
             : "There was an error retrieving the weather data.";
+        
+        console.error(errorMessage);
       }
       finally {
         isLoading.value = false;
@@ -81,9 +88,9 @@ export default {
     return {
       isLoading,
       emitFocus,
-      errorMessage,
       hasError,
       cityData,
+      fetchCityWeather,
     };
   },
 };
@@ -96,7 +103,7 @@ export default {
 
   background-color: var(--white);
   border-radius: 3px;
-  box-shadow: 1px 1px 6px var(--box-shadow-color);
+  box-shadow: 1px 1px 6px var(--gray5-opacity-10);
   margin: 0 auto;
   width: 252px;
 }
