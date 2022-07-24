@@ -2,6 +2,8 @@
 
 Web interface to visualize the weather of some cities using data retrieved from the openweathermap.org portal.
 
+View an online demo at [weather-now-vue.pages.dev](https://weather-now-vue.pages.dev).
+
 ## Preparing a local environment
 
 You need to configure the .env.local file with some values, as in the following example:
