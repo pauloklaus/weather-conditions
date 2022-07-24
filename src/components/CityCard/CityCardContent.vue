@@ -46,6 +46,7 @@ export default defineComponent({
 
 .card-content__temp {
   font-size: 5rem;
+  letter-spacing: -5px;
 }
 
 .card-content__deg {
