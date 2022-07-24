@@ -63,7 +63,7 @@ export default defineComponent({
 
 <style scoped>
 .card-footer {
-  background-color: var(--card-footer-bg-color);
+  background-color: var(--gray1-opacity50);
 }
 
 .card-footer__data {
@@ -80,7 +80,7 @@ export default defineComponent({
 }
 
 .card-footer__data--title {
-  color: var(--muted);
+  color: var(--gray3);
   font-size: 0.6rem;
 }
 
@@ -89,7 +89,7 @@ export default defineComponent({
 }
 
 .card-footer__updated {
-  color: var(--muted);
+  color: var(--gray3);
   font-size: 10px;
   margin-top: 8px;
   padding-bottom: 14px;

@@ -14,7 +14,7 @@
   justify-content: center;
 
   background-color: var(--white);
-  box-shadow: 0 0 3px var(--box-shadow-color);
+  box-shadow: 0 0 3px var(--gray5-opacity-10);
   height: 56px;
 }
 

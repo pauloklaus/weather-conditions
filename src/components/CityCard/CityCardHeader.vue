@@ -18,7 +18,7 @@ export default defineComponent({
 
 <style scoped>
 .card-header {
-  border-bottom: 1px solid var(--divider);
+  border-bottom: 1px solid var(--gray2);
   font-size: 1.1rem;
   padding: 13px 0 7px;
   text-align: center;

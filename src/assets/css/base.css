@@ -5,10 +5,10 @@
   padding: 0;
   outline: none;
   border: none;
-  color: var(--primary);
+  color: var(--gray4);
 }
 
 body {
-  background-color: var(--app-bg-color);
+  background-color: var(--gray1);
   min-width: 320px;
 }

@@ -1,4 +1,6 @@
 :root {
+  --font-family: Helvetica, Arial, sans-serif;
+
   --color-white: 255, 255, 255;
   --color-gray1: 241, 241, 241;
   --color-gray2: 235, 235, 235;
@@ -9,18 +11,27 @@
   --color-warning: 255, 150, 50;
   --color-danger: 237, 25, 70;
 
-  --card-footer-bg-color: rgba(var(--color-gray1), 0.5);
-  --app-bg-color: rgb(var(--color-gray1));
-  --divider: rgb(var(--color-gray2));
-
-  --box-shadow-color: rgba(var(--color-gray5), 0.1);
-
   --white: rgb(var(--color-white));
-  --muted: rgb(var(--color-gray3));
-  --primary: rgb(var(--color-gray4));
   --info: rgb(var(--color-info));
   --warning: rgb(var(--color-warning));
   --danger: rgb(var(--color-danger));
 
-  --font-family: Helvetica, Arial, sans-serif;
+  /* app background color */
+  --gray1: rgb(var(--color-gray1));
+
+  /* card footer: background color */
+  --gray1-opacity50: rgba(var(--color-gray1), 0.5);
+
+  /* divider */
+  --gray2: rgb(var(--color-gray2));
+
+  /* text muted */
+  --gray3: rgb(var(--color-gray3));
+
+  /* text default */
+  --gray4: rgb(var(--color-gray4));
+
+  /* box shadow color */
+  --gray5-opacity-10: rgba(var(--color-gray5), 0.1);
+
 }
