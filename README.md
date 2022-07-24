@@ -2,7 +2,7 @@
 
 Web interface to visualize the weather of some cities using data retrieved from the openweathermap.org portal.
 
-View an online demo at [weather-now-vue.pages.dev](https://weather-now-vue.pages.dev).
+View an online demo at [weather-now.pauloklaus.com.br](https://weather-now.pauloklaus.com.br).
 
 ## Preparing a local environment
 
