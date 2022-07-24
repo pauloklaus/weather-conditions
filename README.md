@@ -82,4 +82,4 @@ make test
 
 ## Online demo
 
-* (Cloudflare Pages)[https://pages.cloudflare.com/]
+* Demo published automatically with [Cloudflare Pages](https://pages.cloudflare.com/)
