@@ -1,4 +1,4 @@
-function HourFormatter(context) {
+function hourFormatter(context) {
   if (typeof context.getHours !== "function") {
     return "";
   }
@@ -11,4 +11,4 @@ function HourFormatter(context) {
   return `${hours}:${mins}:${secs} ${period}`;
 }
 
-export default HourFormatter;
+export default hourFormatter;
