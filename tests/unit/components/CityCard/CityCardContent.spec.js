@@ -2,7 +2,9 @@ import { shallowMount } from "@vue/test-utils";
 import CityCardContent from "@/components/CityCard/CityCardContent.vue";
 
 describe("CityCardContent.vue", () => {
-  const wrapper = shallowMount(CityCardContent, { props: { temp: 25 }});
+
+  const temperature = 25;
+  const wrapper = shallowMount(CityCardContent, { props: { temp: temperature }});
 
   it("should have specific class", () => {
     const divElement = wrapper.find("div");
@@ -12,6 +14,10 @@ describe("CityCardContent.vue", () => {
   it("should have two div children elements", () => {
     const divElement = wrapper.find("div");
     expect(divElement.findAll("div")).toHaveLength(2);
+  });
+
+  it("should show temperature", () => {
+    expect(wrapper.find(".card-content__temp").text()).toBe(`${temperature}`);
   });
 
   it("should have .card-content--blue class when temp is less than or equal to 5 degrees", async () => {
