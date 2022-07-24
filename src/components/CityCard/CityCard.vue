@@ -1,5 +1,5 @@
 <template>
-  <div class="card" @mouseover="$emit('mouseover')">
+  <div class="card" @mouseover="emitMouseOver">
     <CityCardHeader :city="`${cityData.name}, ${cityData.country}`"/>
 
     <CityCardLoader v-if="isLoading" />
@@ -43,10 +43,16 @@ export default {
       default: false,
     },
   },
-  setup({ city }) {
+  setup({ city }, { emit }) {
     const isLoading = ref(true);
     const errorMessage = ref("");
     const hasError = computed(() => errorMessage.value !== "");
+
+    function emitMouseOver() {
+      if (!isLoading.value) {
+        emit("mouseover");
+      }
+    }
 
     const cityService = CityServiceFactory.factory();
     const cityData = ref(City.factoryWithCityAndCountry(city));
@@ -74,6 +80,7 @@ export default {
 
     return {
       isLoading,
+      emitMouseOver,
       errorMessage,
       hasError,
       cityData,
