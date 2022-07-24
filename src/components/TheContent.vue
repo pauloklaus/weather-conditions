@@ -72,4 +72,16 @@ export default defineComponent({
 .main__container {
   margin: 30px 34px;
 }
+
+@media (min-width: 640px) {
+  .main__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 0;
+    margin-bottom: 0;
+    min-height: 100vh;
+  }
+}
 </style>

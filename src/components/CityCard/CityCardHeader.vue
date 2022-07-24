@@ -22,6 +22,5 @@ export default defineComponent({
   font-size: 1.1rem;
   padding: 13px 0 7px;
   text-align: center;
-  width: 100%;
 }
 </style>

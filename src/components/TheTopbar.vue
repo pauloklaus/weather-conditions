@@ -21,4 +21,11 @@
 .topbar__logo {
   height: 26px;
 }
+
+@media (min-width: 640px) {
+  .topbar {
+    position: fixed;
+    width: 100%;
+  }
+}
 </style>

@@ -91,8 +91,7 @@ export default defineComponent({
 .card-footer__updated {
   color: var(--gray3);
   font-size: 10px;
-  margin-top: 8px;
-  padding-bottom: 14px;
+  padding: 14px 0;
   text-align: center;
 }
 </style>

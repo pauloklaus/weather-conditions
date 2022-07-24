@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { computed, ref, toRefs } from "vue";
 import CityServiceFactory from "@/usecases/cities/CityServiceFactory";
 import City from "@/usecases/cities/City";
 import CityCardError from "./CityCardError.vue";
@@ -46,9 +46,14 @@ export default {
       default: false,
     },
   },
-  setup({ city }, { emit }) {
+  setup(props, { emit }) {
+    const { city, showDetails } = toRefs(props);
+
     const isLoading = ref(true);
     const hasError = ref(false);
+    const cardHeight = computed(
+      () => showDetails.value ? "270px" : "225px"
+    );
 
     function emitFocus() {
       if (!isLoading.value) {
@@ -57,14 +62,14 @@ export default {
     }
 
     const cityService = CityServiceFactory.factory();
-    const cityData = ref(City.factoryWithCityAndCountry(city));
+    const cityData = ref(City.factoryWithCityAndCountry(city.value));
 
     async function fetchCityWeather() {
       try {
         isLoading.value = true;
         hasError.value = false;
 
-        const cityResponse = await cityService.getWeather(city);
+        const cityResponse = await cityService.getWeather(city.value);
         cityData.value = cityResponse.toJson();
       }
       catch {
@@ -79,8 +84,9 @@ export default {
 
     return {
       isLoading,
-      emitFocus,
       hasError,
+      cardHeight,
+      emitFocus,
       cityData,
       fetchCityWeather,
     };
@@ -92,15 +98,31 @@ export default {
 .card {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 
   background-color: var(--white);
   border-radius: 3px;
   box-shadow: 1px 1px 6px var(--gray5-opacity-10);
   margin: 0 auto;
+
+  transition: height 0.2s;
+  height: v-bind(cardHeight);
+  min-width: 252px;
   width: 252px;
 }
 
 .card:nth-child(n+2) {
   margin-top: 30px;
+}
+
+@media (min-width: 640px) {
+  .card {
+    margin: 0;
+  }
+
+  .card:nth-child(n+2) {
+    margin-top: 0;
+    margin-left: 50px;
+  }
 }
 </style>

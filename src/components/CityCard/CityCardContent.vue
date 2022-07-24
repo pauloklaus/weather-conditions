@@ -41,7 +41,7 @@ export default defineComponent({
 .card-content {
   display: flex;
   justify-content: center;
-  margin-top: 26px;
+  margin-top: 20px;
 }
 
 .card-content__temp {
