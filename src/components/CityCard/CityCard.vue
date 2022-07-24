@@ -22,7 +22,6 @@
 import { ref } from "vue";
 import CityServiceFactory from "@/usecases/cities/CityServiceFactory";
 import City from "@/usecases/cities/City";
-import CustomError from "@/errors/CustomError";
 import CityCardError from "./CityCardError.vue";
 import CityCardLoader from "./CityCardLoader.vue";
 import CityCardHeader from "./CityCardHeader.vue";
