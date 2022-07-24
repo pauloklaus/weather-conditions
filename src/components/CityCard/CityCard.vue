@@ -63,20 +63,13 @@ export default {
     async function fetchCityWeather() {
       try {
         isLoading.value = true;
-        hasError.value = "";
+        hasError.value = false;
 
         const cityResponse = await cityService.getWeather(city);
         cityData.value = cityResponse.toJson();
       }
-      catch (error) {
+      catch {
         hasError.value = true;
-
-        const errorMessage =
-          error instanceof CustomError
-            ? error.message
-            : "There was an error retrieving the weather data.";
-        
-        console.error(errorMessage);
       }
       finally {
         isLoading.value = false;
