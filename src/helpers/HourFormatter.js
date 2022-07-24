@@ -3,7 +3,7 @@ function hourFormatter(context) {
     return "";
   }
 
-  const hours = `${context.getHours() % 12}`.padStart(2, "0");
+  const hours = `${context.getHours() === 12 ? context.getHours() : context.getHours() % 12}`.padStart(2, "0");
   const mins = `${context.getMinutes()}`.padStart(2, "0");
   const secs = `${context.getSeconds()}`.padStart(2, "0");
   const period = context.getHours() < 12 ? "AM" : "PM";
