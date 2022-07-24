@@ -7,7 +7,7 @@
 
 <style scoped>
 .card-error {
-  margin: 52px auto 49px;
+  margin: 53px auto 54px;
   text-align: center;
 }
 
