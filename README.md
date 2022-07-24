@@ -64,7 +64,7 @@ To run the tests:
 make test
 ```
 
-## Patterns
+## Definitions and patterns
 
 * CSS root vars
 * CSS BEM
