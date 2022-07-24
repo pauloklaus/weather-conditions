@@ -19,7 +19,7 @@ describe("City", () => {
     expect(city.temp).toBe(Math.round(temp));
     expect(city.pressure).toBe(Math.round(pressure));
     expect(city.humidity).toBe(Math.round(humidity));
-    expect(city.updatedAt).toBe(updatedAt);
+    expect(city.updatedAt).toStrictEqual(updatedAt);
   });
 
   it("should get city as json object", () => {
@@ -30,7 +30,7 @@ describe("City", () => {
     expect(cityAsJson.temp).toBe(Math.round(temp));
     expect(cityAsJson.pressure).toBe(Math.round(pressure));
     expect(cityAsJson.humidity).toBe(Math.round(humidity));
-    expect(cityAsJson.updatedAt).toBe(updatedAt);
+    expect(cityAsJson.updatedAt).toStrictEqual(updatedAt);
   });
 
   it("should factory new city from string", () => {
@@ -88,6 +88,17 @@ describe("City", () => {
       new City({
         ...city.toJson(),
         humidity: "wrong-humidity",
+      });
+    };
+
+    expect(test).toThrow(InvalidFormatValidationError);
+  });
+
+  it("should throw a InvalidFormatValidationError with wrong update date field", () => {
+    const test = () => {
+      new City({
+        ...city.toJson(),
+        updatedAt: "wrong-update-at",
       });
     };
 

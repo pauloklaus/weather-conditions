@@ -38,12 +38,16 @@ class City {
       throw new InvalidFormatValidationError("Humidity is not valid.");
     }
 
+    if (!Date.parse(updatedAt)) {
+      throw new InvalidFormatValidationError("Updated date is not valid.");
+    }
+
     this._name = name;
     this._country = country;
     this._temp = Math.round(temp);
     this._pressure = Math.round(pressure);
     this._humidity = Math.round(humidity);
-    this._updatedAt = updatedAt;
+    this._updatedAt = new Date(updatedAt);
   }
 
   get name() {
