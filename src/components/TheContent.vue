@@ -27,7 +27,7 @@ export default defineComponent({
     const cardStepHandler = new StepHandler({ listSize: cities.length });
     const currentStep = ref(cardStepHandler.currentStep);
 
-    const showNextDetailsTime = 1_000;
+    const showNextDetailsTime = 10_000;
     let detailsTimeout = null;
 
     function isCurrentShowDetails(index) {
