@@ -14,7 +14,8 @@
 </template>
 
 <script>
-import { defineComponent, onBeforeUnmount, ref } from "vue";
+import { defineComponent, onBeforeUnmount, onMounted, ref } from "vue";
+import StepHandler from "@/helpers/StepHandler";
 import IsNumber from "@/helpers/IsNumber";
 import CityCard from "./CityCard/CityCard.vue";
 
@@ -23,10 +24,14 @@ export default defineComponent({
   setup() {
     const cities = ["urubici,br", "nuuk,gl", "nairobi,ke"];
     const main = ref({});
-    const detailsIndex = ref(0);
+    const cardStepHandler = new StepHandler({ listSize: cities.length });
+    const currentStep = ref(cardStepHandler.currentStep);
+
+    const showNextDetailsTime = 1_000;
+    let detailsTimeout = null;
 
     function isCurrentShowDetails(index) {
-      return detailsIndex.value === index;
+      return currentStep.value === index;
     }
 
     function clearDetailsTimeout() {
@@ -35,30 +40,38 @@ export default defineComponent({
       }
     }
 
-    const showNextDetailsTime = 10_000;
-    let detailsTimeout = null;
-
     function showDetails(newIndex) {
       clearDetailsTimeout();
 
       if (IsNumber(newIndex)) {
-        detailsIndex.value = newIndex;
+        currentStep.value = cardStepHandler.jumpToStep(newIndex);
       }
 
       detailsTimeout = setTimeout(() => {
-        detailsIndex.value = 
-          detailsIndex.value < cities.length - 1
-            ? detailsIndex.value + 1
-            : 0;
-
+        currentStep.value = cardStepHandler.next();
         showDetails();
       }, showNextDetailsTime);
     }
 
-    showDetails();
+    function updateStepDirection() {
+      if (main.value.clientWidth < 640 && cardStepHandler.isWalkingBackwards()) {
+        cardStepHandler.switchToWalkForward();
+      }
+
+      if (main.value.clientWidth >= 640 && cardStepHandler.isWalkingForward()) {
+        cardStepHandler.switchToWalkBackwards();
+      }
+    }
+
+    onMounted(() => {
+      window.addEventListener("resize", updateStepDirection);
+      updateStepDirection();
+      showDetails();
+    });
 
     onBeforeUnmount(() => {
       clearDetailsTimeout();
+      window.removeEventListener("resize", updateStepDirection);
     });
 
     return {
