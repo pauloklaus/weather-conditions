@@ -15,6 +15,7 @@
 
 <script>
 import { defineComponent, onBeforeUnmount, ref } from "vue";
+import IsNumber from "@/helpers/IsNumber";
 import CityCard from "./CityCard/CityCard.vue";
 
 export default defineComponent({
@@ -28,10 +29,6 @@ export default defineComponent({
       return detailsIndex.value === index;
     }
 
-    function showDetails(index) {
-      return detailsIndex.value = index;
-    }
-
     function clearDetailsTimeout() {
       if (detailsTimeout) {
         clearTimeout(detailsTimeout);
@@ -41,20 +38,24 @@ export default defineComponent({
     const showNextDetailsTime = 10_000;
     let detailsTimeout = null;
 
-    function showNextDetails() {
+    function showDetails(newIndex) {
       clearDetailsTimeout();
 
-      detailsTimeout = setTimeout(() => {        
+      if (IsNumber(newIndex)) {
+        detailsIndex.value = newIndex;
+      }
+
+      detailsTimeout = setTimeout(() => {
         detailsIndex.value = 
           detailsIndex.value < cities.length - 1
             ? detailsIndex.value + 1
             : 0;
 
-        showNextDetails();
+        showDetails();
       }, showNextDetailsTime);
     }
 
-    showNextDetails();
+    showDetails();
 
     onBeforeUnmount(() => {
       clearDetailsTimeout();
