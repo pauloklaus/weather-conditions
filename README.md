@@ -44,7 +44,9 @@ npm run test:unit
 ## Run with docker-compose
 
 ```sh
-docker-compose up
+docker-cogit clone https://github.com/pauloklaus/weather-now/
+cd weather-now
+mpose up
 ```
 
 With docker-compose, dependencies are automatically installed, tests are run and the application is launched.
