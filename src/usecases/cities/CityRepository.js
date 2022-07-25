@@ -25,7 +25,7 @@ class CityRepository {
       temp: response?.main?.temp,
       pressure: response?.main?.pressure,
       humidity: response?.main?.humidity,
-      updateAd: new Date,
+      updatedAt: new Date,
     });
 
     this._cacheHandler.set(cityName, newCity.toJson());
