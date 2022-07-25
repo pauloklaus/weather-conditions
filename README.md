@@ -76,7 +76,7 @@ make test
 
 ## Tools and libs
 
-* Vue.js 3
+* Vue.js 3 (with Composition API)
 * Vue Unit Test
 * Jest
 * Docker
