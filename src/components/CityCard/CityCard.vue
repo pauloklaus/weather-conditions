@@ -20,8 +20,8 @@
 
 <script>
 import { computed, onBeforeUnmount, ref, toRefs } from "vue";
-import CityServiceFactory from "@/usecases/cities/CityServiceFactory";
-import City from "@/usecases/cities/City";
+import GetCityWeather from "@/usecases/GetCityWeather";
+import City from "@/services/cities/City";
 import CityCardError from "./CityCardError.vue";
 import CityCardLoader from "./CityCardLoader.vue";
 import CityCardHeader from "./CityCardHeader.vue";
@@ -78,7 +78,6 @@ export default {
       }, refreshCityDataTime);
     }
 
-    const cityService = CityServiceFactory.factory();
     const cityData = ref(City.factoryWithCityAndCountry(city.value));
 
     async function fetchCityWeather() {
@@ -86,7 +85,7 @@ export default {
         isLoading.value = true;
         hasError.value = false;
 
-        const cityResponse = await cityService.getWeather(city.value);
+        const cityResponse = await GetCityWeather.execute(city.value);
         cityData.value = cityResponse.toJson();
         refreshCityData();
       }

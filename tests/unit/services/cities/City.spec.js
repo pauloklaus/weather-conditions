@@ -1,4 +1,4 @@
-import City from "@/usecases/cities/City";
+import City from "@/services/cities/City";
 import RequiredFieldValidationError from "@/errors/RequiredFieldValidationError";
 import InvalidFormatValidationError from "@/errors/InvalidFormatValidationError";
 

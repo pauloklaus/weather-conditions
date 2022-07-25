@@ -1,5 +1,5 @@
-import City from "@/usecases/cities/City";
-import CityService from "@/usecases/cities/CityService";
+import City from "@/services/cities/City";
+import CityService from "@/services/cities/CityService";
 
 describe("CityService", () => {
   const repository = {

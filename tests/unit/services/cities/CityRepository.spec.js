@@ -1,5 +1,5 @@
-import City from "@/usecases/cities/City";
-import CityRepository from "@/usecases/cities/CityRepository";
+import City from "@/services/cities/City";
+import CityRepository from "@/services/cities/CityRepository";
 
 describe("CityRepository", () => {
   const city = new City({
