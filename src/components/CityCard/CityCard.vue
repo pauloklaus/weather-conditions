@@ -52,7 +52,7 @@ export default {
     const isLoading = ref(true);
     const hasError = ref(false);
     const cardHeight = computed(
-      () => showDetails.value ? "270px" : "225px"
+      () => showDetails.value ? "268px" : "225px"
     );
 
     function emitFocus() {
