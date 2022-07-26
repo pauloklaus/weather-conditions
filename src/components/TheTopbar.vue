@@ -1,6 +1,6 @@
 <template>
   <header class="topbar">
-    <img class="topbar__logo" src="@/assets/logo.svg" />
+    <img class="topbar__logo" src="@/assets/images/logo.svg" />
   </header>
 </template>
 

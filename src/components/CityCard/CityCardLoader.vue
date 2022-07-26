@@ -1,6 +1,6 @@
 <template>
   <div class="card-loader">
-    <img src="@/assets/loader.svg" height="48" />
+    <img src="@/assets/images/loader.svg" height="48" />
   </div>
 </template>
 
