@@ -46,12 +46,11 @@ export default defineComponent({
 .card-content__temp {
   font-size: 5rem;
   letter-spacing: -5px;
-  margin-top: 20px;
 }
 
 .card-content__deg {
   font-size: 2.5rem;
-  margin-top: 26px;
+  margin-top: 14px;
 }
 
 .card-content--blue > div {
@@ -64,5 +63,15 @@ export default defineComponent({
 
 .card-content--orange > div {
   color: var(--warning);
+}
+
+@media (min-width: 640px) {
+  .card-content__temp {
+    margin-top: 20px;
+  }
+
+  .card-content__deg {
+    margin-top: 26px;
+  }
 }
 </style>
