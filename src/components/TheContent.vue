@@ -119,9 +119,5 @@ export default defineComponent({
   .main__container--order-1 {
     order: 0;
   }
-
-  .main__container--order-2 {
-    order: 2;
-  }
 }
 </style>
