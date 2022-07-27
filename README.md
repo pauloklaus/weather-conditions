@@ -77,6 +77,7 @@ make test
 ## Tools and libs
 
 * [Vue.js 3](https://vuejs.org/) (with Composition API)
+* [Pinia](https://pinia.vuejs.org/)
 * [Vue Test Utils](https://test-utils.vuejs.org/)
 * [Jest](https://jestjs.io/)
 * [Docker](https://docs.docker.com/)
