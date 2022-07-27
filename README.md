@@ -70,17 +70,17 @@ make test
 
 ## Definitions and patterns
 
-* CSS root vars
-* CSS BEM
+* [CSS root vars](https://www.w3schools.com/css/css3_variables.asp)
+* [CSS BEM](https://en.bem.info/methodology/css/)
 * Design mobile first
 
 ## Tools and libs
 
-* Vue.js 3 (with Composition API)
-* Vue Unit Test
-* Jest
-* Docker
-* docker-compose
+* [Vue.js 3](https://vuejs.org/) (with Composition API)
+* [Vue Test Utils](https://test-utils.vuejs.org/)
+* [Jest](https://jestjs.io/)
+* [Docker](https://docs.docker.com/)
+* [docker-compose](https://docs.docker.com/compose/)
 
 ## Online demo
 
