@@ -1,8 +1,31 @@
 <template>
   <header class="topbar">
     <img class="topbar__logo" src="@/assets/images/logo.svg" />
+    <a class="topbar__color-scheme" href="#" @click="toggleAppColorScheme">
+      <img data-test="color-scheme-icon" :src="colorSchemeIconFile" />
+    </a>
   </header>
 </template>
+
+<script>
+import { computed, defineComponent } from "vue";
+import useColorSchemeStore from "@/stores/colorSchemeStore";
+import moonSvgIcon from "@/assets/images/moon.svg";
+import sunSvgIcon from "@/assets/images/sun.svg";
+
+export default defineComponent({
+  setup() {
+    const colorScheme = useColorSchemeStore();
+    const colorSchemeIconFile = computed(() => colorScheme.isDarkMode ? sunSvgIcon : moonSvgIcon);
+
+    return {
+      colorSchemeIconFile,
+      toggleAppColorScheme: colorScheme.toggleAppColorScheme,
+    };
+  },
+});
+</script>
+
 
 <style scoped>
 .topbar {
@@ -20,6 +43,13 @@
 
 .topbar__logo {
   height: 26px;
+}
+
+.topbar__color-scheme {
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  padding: 10px;
 }
 
 @media (min-width: 640px) {
