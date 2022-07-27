@@ -17,7 +17,7 @@
 }
 
 .card-error__button {
-  background-color: var(--white);
+  background-color: var(--bg-color);
   border: 3px solid var(--gray4);
   border-radius: 50px;
   font-size: 0.9rem;

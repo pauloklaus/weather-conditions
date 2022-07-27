@@ -13,7 +13,7 @@
   align-items: center;
   justify-content: center;
 
-  background-color: var(--white);
+  background-color: var(--bg-color);
   box-shadow: 0 0 3px var(--gray5-opacity-10);
   height: 56px;
 }

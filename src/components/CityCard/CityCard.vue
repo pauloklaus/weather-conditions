@@ -121,7 +121,7 @@ export default {
   flex-direction: column;
   justify-content: space-between;
 
-  background-color: var(--white);
+  background-color: var(--bg-color);
   border-radius: 3px;
   box-shadow: 1px 1px 6px var(--gray5-opacity-10);
   margin: 0 auto;

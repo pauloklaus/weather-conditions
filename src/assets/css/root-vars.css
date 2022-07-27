@@ -1,7 +1,7 @@
 :root {
   --font-family: Helvetica, Arial, sans-serif;
 
-  --color-white: 255, 255, 255;
+  --color-background: 255, 255, 255;
   --color-gray1: 241, 241, 241;
   --color-gray2: 235, 235, 235;
   --color-gray3: 180, 180, 180;
@@ -11,7 +11,7 @@
   --color-warning: 255, 150, 50;
   --color-danger: 237, 25, 70;
 
-  --white: rgb(var(--color-white));
+  --bg-color: rgb(var(--color-background));
   --info: rgb(var(--color-info));
   --warning: rgb(var(--color-warning));
   --danger: rgb(var(--color-danger));
@@ -33,5 +33,20 @@
 
   /* box shadow color */
   --gray5-opacity-10: rgba(var(--color-gray5), 0.1);
+}
 
+.dark-mode:root {
+  --color-background: 0, 0, 0;
+  --color-gray1: 19, 19, 19;
+  --color-gray2: 25, 25, 25;
+  --color-gray3: 75, 75, 75;
+  --color-gray4: 140, 131, 123;
+  --color-gray5: 204, 204, 204;
+  --color-info: 105, 163, 255;
+  --color-warning: 255, 150, 50;
+  --color-danger: 237, 25, 70;
+
+  --color-info: 45, 103, 195;
+  --color-warning: 195, 90, 0;
+  --color-danger: 177, 0, 10;
 }
