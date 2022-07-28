@@ -68,6 +68,15 @@ To run the tests:
 make test
 ```
 
+## Current test coverage
+
+```text
+----------------------------------|---------|----------|---------|---------
+File                              | % Stmts | % Branch | % Funcs | % Lines 
+----------------------------------|---------|----------|---------|---------
+All files                         |   96.59 |    88.88 |   94.73 |   96.59 
+```
+
 ## Definitions and patterns
 
 * [CSS root vars](https://www.w3schools.com/css/css3_variables.asp)
