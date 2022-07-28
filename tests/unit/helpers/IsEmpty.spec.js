@@ -10,7 +10,7 @@ describe("IsEmpty", () => {
     expect(isEmpty(null)).toBeTruthy();
   });
 
-  it("should return false with an valid string", () => {
+  it("should return false with an non empty string", () => {
     expect(isEmpty("t")).toBeFalsy();
     expect(isEmpty("test")).toBeFalsy();
     expect(isEmpty(" test ")).toBeFalsy();
