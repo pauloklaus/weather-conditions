@@ -132,17 +132,13 @@ export default {
   width: 252px;
 }
 
-.card:nth-child(n+2) {
+.card {
   margin-top: 30px;
 }
 
 @media (min-width: 640px) {
   .card {
-    margin: 0;
-  }
-
-  .card:nth-child(n+2) {
-    margin: 0 50px;
+    margin: 0 20px;
   }
 }
 </style>
