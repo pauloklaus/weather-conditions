@@ -2,7 +2,7 @@
   <header class="topbar">
     <img class="topbar__logo" src="@/assets/images/logo.svg" />
     <a class="topbar__color-scheme" href="#" @click="toggleAppColorScheme">
-      <img data-test="color-scheme-icon" :src="colorSchemeIconFile" />
+      <img :src="colorSchemeIconFile" />
     </a>
   </header>
 </template>
