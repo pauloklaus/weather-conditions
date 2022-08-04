@@ -1,6 +1,6 @@
 <template>
   <div class="card" @mouseover="emitFocus" @click="emitFocus">
-    <CityCardHeader :city="`${cityData.name}, ${cityData.country}`"/>
+    <CityCardHeader :city="`${cityData.name}, ${cityData.country}`" @updateCity="updateCity" />
 
     <CityCardError v-if="hasError" @tryAgain="fetchCityWeather" />
 
@@ -71,8 +71,6 @@ export default {
     }
 
     function refreshCityData() {
-      clearRefreshTimeout();
-
       refreshTimeout = setTimeout(() => {
         fetchCityWeather();
       }, refreshCityDataTime);
@@ -81,12 +79,13 @@ export default {
     const cityData = ref(City.factoryWithCityAndCountry(city.value));
 
     async function fetchCityWeather() {
+      clearRefreshTimeout();
+
       try {
         isLoading.value = true;
         hasError.value = false;
 
-        const cityResponse = await GetCityWeather.execute(city.value);
-        cityData.value = cityResponse.toJson();
+        cityData.value = await GetCityWeather.execute(cityData.value.cityAndCountry);
         refreshCityData();
       }
       catch {
@@ -99,6 +98,27 @@ export default {
 
     fetchCityWeather();
 
+    async function updateCity(cityAndCountry) {
+      clearRefreshTimeout();
+
+      const currentCityAndCountry = cityData.value;
+      cityData.value = City.factoryWithCityAndCountry(cityAndCountry);
+
+      try {
+        isLoading.value = true;
+        hasError.value = false;
+
+        cityData.value = await GetCityWeather.execute(cityAndCountry);
+        refreshCityData();
+      }
+      catch {
+        cityData.value = currentCityAndCountry;
+      }
+      finally {
+        isLoading.value = false;
+      }
+    }
+
     onBeforeUnmount(() => {
       clearRefreshTimeout();
     });
@@ -110,6 +130,7 @@ export default {
       emitFocus,
       cityData,
       fetchCityWeather,
+      updateCity,
     };
   },
 };
