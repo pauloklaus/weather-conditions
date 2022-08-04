@@ -1,5 +1,5 @@
-function IsNumber(context) {
+function isNumber(context) {
   return typeof context === "number";
 }
 
-export default IsNumber;
+export default isNumber;

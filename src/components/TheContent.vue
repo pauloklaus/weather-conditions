@@ -16,7 +16,7 @@
 <script>
 import { defineComponent, onBeforeUnmount, onMounted, ref } from "vue";
 import StepHandler from "@/helpers/StepHandler";
-import IsNumber from "@/helpers/IsNumber";
+import isNumber from "@/helpers/IsNumber";
 import CityCard from "./CityCard/CityCard.vue";
 
 export default defineComponent({
@@ -43,7 +43,7 @@ export default defineComponent({
     function showDetails(newIndex) {
       clearDetailsTimeout();
 
-      if (IsNumber(newIndex)) {
+      if (isNumber(newIndex)) {
         currentStep.value = cardStepHandler.jumpToStep(newIndex);
       }
 
