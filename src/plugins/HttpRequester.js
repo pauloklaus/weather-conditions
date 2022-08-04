@@ -1,4 +1,8 @@
+import HttpStatusCode from "@/enums/HttpStatusCode";
 import InvalidURLError from "@/errors/InvalidURLError";
+import NotFoundError from "@/errors/NotFoundError";
+import UnauthorizedAccessError from "@/errors/UnauthorizedAccessError";
+import InternalServerError from "@/errors/InternalServerError";
 
 class HttpRequester {
   constructor(appId, baseUrl) {
@@ -10,7 +14,7 @@ class HttpRequester {
     try {
       return new URL(`${this._baseUrl}${route}`);
     } catch(error) {
-      throw new InvalidURLError("Error fetching data.");
+      throw new InvalidURLError();
     }
   }
 
@@ -26,8 +30,20 @@ class HttpRequester {
   }
 
   async get(route = "", params = {}) {
-    const url = this._buildGetUrl(route, params);
-    const response = await fetch(url);
+    const response = await fetch(this._buildGetUrl(route, params));
+
+    if (response.status === HttpStatusCode.NOT_FOUND) {
+      throw new NotFoundError();
+    }
+
+    if (response.status === HttpStatusCode.UNAUTHORIZED) {
+      throw new UnauthorizedAccessError();
+    }
+
+    if (response.status !== HttpStatusCode.OK) {
+      throw new InternalServerError();
+    }
+
     return await response.json();
   }
 }
