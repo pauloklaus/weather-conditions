@@ -6,19 +6,19 @@ class CityRepository {
     this._cacheHandler = cacheHandler;
   }
 
-  async getWeather(city) {
-    const cityName = `${city.name},${city.country}`;
-
-    if (this._cacheHandler.isValid(cityName)) {
-      return Promise.resolve(new City(this._cacheHandler.get(cityName)));
-    }
-
-    const params = {
-      q: cityName,
+  _buildParams(cityAndCountry) {
+    return {
+      q: cityAndCountry,
       units: "metric",
     };
+  }
 
-    const response = await this._httpRequester.get("/weather", params);
+  async getWeather(cityAndCountry) {
+    if (this._cacheHandler.isValid(cityAndCountry)) {
+      return Promise.resolve(new City(this._cacheHandler.get(cityAndCountry)));
+    }
+
+    const response = await this._httpRequester.get("/weather", this._buildParams(cityAndCountry));
     const newCity = new City({
       name: `${response?.name}`,
       country: `${response?.sys?.country}`,
@@ -28,7 +28,7 @@ class CityRepository {
       updatedAt: new Date,
     });
 
-    this._cacheHandler.set(cityName, newCity.toJson());
+    this._cacheHandler.set(cityAndCountry, newCity.toJson());
     return newCity;
   }
 }
