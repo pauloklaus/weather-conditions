@@ -16,6 +16,7 @@ describe("City", () => {
   it("should get city model", () => {
     expect(city.name).toBe(name);
     expect(city.country).toBe(country);
+    expect(city.cityAndCountry).toBe(`${name},${country}`);
     expect(city.temp).toBe(Math.round(temp));
     expect(city.pressure).toBe(Math.round(pressure));
     expect(city.humidity).toBe(Math.round(humidity));
@@ -34,7 +35,7 @@ describe("City", () => {
   });
 
   it("should factory new city from string", () => {
-    const cityFromFactory = City.factoryWithCityAndCountry("sao paulo,br");
+    const cityFromFactory = City.factoryWithCityAndCountry("sao paulo,  br");
 
     expect(cityFromFactory.name).toBe("Sao Paulo");
     expect(cityFromFactory.country).toBe("BR");

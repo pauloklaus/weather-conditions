@@ -1,9 +1,9 @@
 import CityServiceFactory from "@/services/cities/CityServiceFactory";
 
 class GetCityWeather {
-  static async execute(city) {
+  static async execute(cityAndCountry) {
     const cityService = CityServiceFactory.factory();
-    return await cityService.getWeather(city);
+    return await cityService.getWeather(cityAndCountry);
   }
 }
 

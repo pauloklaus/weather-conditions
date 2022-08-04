@@ -58,6 +58,10 @@ class City {
     return this._country;
   }
 
+  get cityAndCountry() {
+    return `${this._name},${this._country}`;
+  }
+
   get temp() {
     return this._temp;
   }
@@ -78,8 +82,8 @@ class City {
     const [ name = "", country = "" ] = `${cityAndCountry}`.split(",");
 
     return new City({
-      name: capitalizeAllWords(name),
-      country: `${country}`.toUpperCase(),
+      name: capitalizeAllWords(name.trim()),
+      country: `${country}`.trim().toUpperCase(),
     });
   }
 
