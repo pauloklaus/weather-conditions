@@ -4,6 +4,12 @@ Web interface to visualize the weather of some cities using data retrieved from 
 
 View an online demo at [weather-now.pauloklaus.com.br](https://weather-now.pauloklaus.com.br).
 
+Some features:
+
+* Card order changes between desktop and mobile devices
+* The city can be changed by clicking on it and typing a new name in format: city, country (with 2 digits)
+* The app follows dark mode if it is configured in the operating system. But the user can change the configuration and it will be saved in the browser's storage.
+
 ## Preparing a local environment
 
 You need to configure the .env.local file with some values, as in the following example:
@@ -74,7 +80,7 @@ make test
 ----------------------------------|---------|----------|---------|---------
 File                              | % Stmts | % Branch | % Funcs | % Lines 
 ----------------------------------|---------|----------|---------|---------
-All files                         |   96.59 |    88.88 |   94.73 |   96.59 
+All files                         |   96.22 |    89.74 |   95.31 |   96.22
 ```
 
 ## Definitions and patterns
