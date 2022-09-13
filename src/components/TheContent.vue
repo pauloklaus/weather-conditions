@@ -86,7 +86,7 @@ export default defineComponent({
 
 <style scoped>
 .main__container {
-  margin: 30px 34px;
+  margin: 30px 34px 60px;
 }
 
 .main__container--order-0 {
