@@ -4,11 +4,24 @@ Web interface to visualize the weather of some cities using data retrieved from 
 
 View an online demo at [weather-now.pauloklaus.com.br](https://weather-now.pauloklaus.com.br).
 
-Some features:
+Some app features:
 
+* Cache city weather data (for 10 minutes) [CacheHandler.js](./src/plugins/CacheHandler.js)
 * Card order changes between desktop and mobile devices
 * The city can be changed by clicking on it and typing a new name in format: city, country (with 2 digits)
 * The app follows dark mode if it is configured in the operating system. But the user can change the configuration and it will be saved in the browser's storage.
+
+Some project features:
+
+* Layered architecture
+* Single responsability
+* Clean code
+* Unit test coverage
+
+Some patterns:
+
+* Dependency inversion
+* Static factory
 
 ## Preparing a local environment
 
